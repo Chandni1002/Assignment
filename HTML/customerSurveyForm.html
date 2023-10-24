@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 1;
+        padding: 1;
+        box-sizing: border-box;
+      }
+      .outer-wrapper {
+        background-color: lightskyblue;
+        padding: 1rem;
+      }
+
+      .outer-box {
+        max-width: 50rem;
+        margin: 0rem 11rem;
+        padding: 2.5rem 1rem;
+        border: 1px solid;
+        background-color: white;
+      }
+
+      .field-inputs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .form-control-input {
+        width: 100%;
+        padding: 0.5rem;
+        margin-top: 0.5rem;
+      }
+
+      .textarea-input {
+        width: 90%;
+        padding: 1rem;
+        margin-top: 0.5rem;
+      }
+      .submit-button {
+        background-color: blue;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="outer-wrapper">
+
+    <h1><center>Customer Survey Form</center></h1>
+    <div class="outer-box">
+      <form onsubmit="return validateForm()">
+        <div class="field-inputs">
+          <div class="input-div">
+            <div id="name" class="name">Name</div>
+            <input
+              type="text"
+              class="form-control-input"
+              id="first-name"
+              name="first name"
+              required
+            />
+          </div>
+          <div class="input-div">
+            <div id="last-name-help" class="help-text">Email</div>
+            <input
+              type="email"
+              class="form-control-input"
+              id="email"
+              name="email"
+              required
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="radio1"
+            >Is this your first time using our products and services?</label
+          >
+          <br />
+          <input
+            type="radio"
+            name="radioGroup1"
+            id="radio1"
+            value="Yes"
+            required
+          />
+          <label for="radio1">Yes</label>
+
+          <input
+            type="radio"
+            name="radioGroup1"
+            id="radio2"
+            value="No"
+            required
+          />
+          <label for="radio2">No</label>
+        </div>
+        <br />
+
+        <div>
+          <label for="radio3"
+            >Would you suggest your friends and colleagues?</label
+          >
+          <br />
+          <input
+            type="radio"
+            name="radioGroup2"
+            id="radio3"
+            value="Yes"
+            required
+          />
+          <label for="radio3">Yes</label>
+
+          <input
+            type="radio"
+            name="radioGroup2"
+            id="radio4"
+            value="No"
+            required
+          />
+          <label for="radio4">No</label>
+        </div>
+        <br />
+
+        <div>
+          <label for="radio5"
+            >How satisfied are you with our company overall?</label
+          >
+          <br />
+          <input
+            type="radio"
+            name="radioGroup3"
+            id="radio5"
+            value="satisfied"
+            required
+          />
+          <label for="radio5">Satisfied</label>
+
+          <input
+            type="radio"
+            name="radioGroup3"
+            id="radio6"
+            value="Undecided"
+            required
+          />
+          <label for="radio6">Undecided</label>
+
+          <input
+            type="radio"
+            name="radioGroup3"
+            id="radio7"
+            value="Unsatisfied"
+            required
+          />
+          <label for="radio7">Unsatisfied</label>
+        </div>
+        <br />
+
+        <div>
+          <label for="story"
+            >Do you have suggestions to improve our service?</label
+          >
+          <textarea
+            id="story"
+            name="story"
+            rows="5"
+            cols="5"
+            class="textarea-input"
+          ></textarea>
+        </div>
+
+        <input type="submit" class="submit-button" value="Submit" />
+      </form>
+    </div>
+
+    <script>
+      function validateForm() {
+        var radios1 = document.getElementsByName("radioGroup1");
+        var radios2 = document.getElementsByName("radioGroup2");
+        var radios3 = document.getElementsByName("radioGroup3");
+
+        var textarea = document.getElementById("story");
+
+        var isValid = false;
+
+        for (var i = 0; i < radios1.length; i++) {
+          if (radios1[i].checked) {
+            isValid = true;
+            break;
+          }
+        }
+
+        if (!isValid) {
+          alert("Please answer all questions.");
+          return false;
+        }
+
+        isValid = false;
+
+        for (var i = 0; i < radios2.length; i++) {
+          if (radios2[i].checked) {
+            isValid = true;
+            break;
+          }
+        }
+
+        if (!isValid) {
+          alert("Please answer all questions.");
+          return false;
+        }
+
+        isValid = false;
+
+        for (var i = 0; i < radios3.length; i++) {
+          if (radios3[i].checked) {
+            isValid = true;
+            break;
+          }
+        }
+
+        if (!isValid) {
+          alert("Please answer all questions.");
+          return false;
+        }
+
+        if (textarea.value.trim() === "") {
+          alert("Please provide suggestions.");
+          return false;
+        }
+
+        return true;
+      }
+    </script>
+  </body>
+</html>
