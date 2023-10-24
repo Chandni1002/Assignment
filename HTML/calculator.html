@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <style>
+      body {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50vh;
+        background-color: #f0f0f0; /* Set the background color of the body */
+      }
+
+      .calculator-container {
+        background-color: #e0e0e0; /* Set the light gray background color for the container */
+        padding: 100px; /* Add some padding around the calculator */
+      }
+
+      table {
+        border-collapse: collapse; /* Remove all borders and spacing between table cells */
+        width: 100%; /* Make sure the table takes up the full width */
+      }
+
+      .number,
+      .last-row-button,
+      .ac-button {
+        width: 100%; /* Make buttons take up 100% of the cell width */
+        height: 100%; /* Make buttons take up 100% of the cell height */
+        border: none; /* Remove borders for buttons */
+        margin: 0; /* Remove margin for buttons */
+        padding: 0; /* Remove padding for buttons */
+        text-align: center; /* Center text inside buttons */
+        font-size: 18px; /* Set font size for buttons */
+        background-color: black; /* Set the background color to black */
+        color: white; /* Set the text color to white for better visibility */
+      }
+
+      .number {
+        background-color: black; /* Set the background color to black */
+        color: white; /* Set the text color to white for better visibility */
+      }
+
+      .last-row-button {
+        background-color: gray; /* Set the background color to black */
+        color: white;
+      }
+      .ac-button {
+        background-color: green; /* Set the background color of the "AC" button to green */
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="calculator-container">
+      <center>
+        <form name="cal">
+          <table class="tab">
+            <tr>
+              <td colspan="3"><input type="text" name="text" id="acc" /></td>
+              <td><input type="reset" class="ac-button" value="AC" /></td>
+            </tr>
+
+            <tr>
+              <td>
+                <input
+                  type="button"
+                  value="7"
+                  class="number"
+                  onclick="cal.acc.value += '7'"
+                />
+              </td>
+              <td>
+                <input
+                  type="button"
+                  value="8"
+                  class="number"
+                  onclick="cal.acc.value += '8'"
+                />
+              </td>
+              <td>
+                <input
+                  type="button"
+                  value="9"
+                  class="number"
+                  onclick="cal.acc.value += '9'"
+                />
+              </td>
+              <td>
+                <input
+                  type="button"
+                  class="last-row-button"
+                  value="+"
+                  onclick="add()"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input
+                  type="button"
+                  value="4"
+                  class="number"
+                  onclick="cal.acc.value += '4'"
+                />
+              </td>
+              <td>
+                <input
+                  type="button"
+                  value="5"
+                  class="number"
+                  onclick="cal.acc.value += '5'"
+                />
+              </td>
+              <td>
+                <input
+                  type="button"
+                  value="6"
+                  class="number"
+                  onclick="cal.acc.value += '6'"
+                />
+              </td>
+              <td>
+                <input
+                  type="button"
+                  class="last-row-button"
+                  value="-"
+                  onclick="sub()"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input
+                  type="button"
+                  value="1"
+                  class="number"
+                  onclick="cal.acc.value += '1'"
+                />
+              </td>
+              <td>
+                <input
+                  type="button"
+                  value="2"
+                  class="number"
+                  onclick="cal.acc.value += '2'"
+                />
+              </td>
+              <td>
+                <input
+                  type="button"
+                  value="3"
+                  class="number"
+                  onclick="cal.acc.value += '3'"
+                />
+              </td>
+              <td>
+                <input
+                  type="button"
+                  class="last-row-button"
+                  value="/"
+                  onclick="div()"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input
+                  type="button"
+                  value="."
+                  class="number"
+                  onclick="cal.acc.value += '.'"
+                />
+              </td>
+              <td>
+                <input
+                  type="button"
+                  value="0"
+                  class="number"
+                  onclick="cal.acc.value += '0'"
+                />
+              </td>
+              <td>
+                <input
+                  type="button"
+                  class="number"
+                  value="="
+                  onclick="result()"
+                />
+              </td>
+              <td>
+                <input
+                  type="button"
+                  class="last-row-button"
+                  value="x"
+                  onclick="mul()"
+                />
+              </td>
+            </tr>
+          </table>
+        </form>
+      </center>
+
+      <script>
+        function add() {
+          cal.acc.value += "+";
+        }
+
+        function sub() {
+          cal.acc.value += "-";
+        }
+
+        function mul() {
+          cal.acc.value += "*";
+        }
+
+        function div() {
+          cal.acc.value += "/";
+        }
+
+        function result() {
+          try {
+            cal.acc.value = eval(cal.acc.value); // Using eval to evaluate the mathematical expression
+          } catch (error) {
+            cal.acc.value = "Error";
+          }
+        }
+      </script>
+    </div>
+  </body>
+</html>
