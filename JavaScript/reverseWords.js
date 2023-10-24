@@ -1,4 +1,4 @@
- function reverseWords(input) {
+function reverseWords(input) {
     let words = input.split(' ');
     let reversedWords = words.map(word => {
         return word.split('').reverse().join('');
@@ -7,7 +7,12 @@
 
     return output;
 }
-let input = "This is a sunny day";
-let output = reverseWords(input);
-console.log("Input: " + input);
-console.log("Output: " + output);
+
+function main() {
+    let input = "This is a sunny day";
+    let output = reverseWords(input);
+    console.log("Input: " + input);
+    console.log("Output: " + output);
+}
+
+main();
